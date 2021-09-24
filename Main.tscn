@@ -1,8 +1,37 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://test.mp3" type="AudioStream" id=2]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 87.1684
+margin_top = 314.393
+margin_right = 256.168
+margin_bottom = 383.393
+rect_pivot_offset = Vector2( 116.711, 21.9195 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StopButton" type="Button" parent="."]
+margin_left = 500.586
+margin_top = 321.0
+margin_right = 669.586
+margin_bottom = 390.0
+rect_pivot_offset = Vector2( 84.5, 19.0878 )
+text = "Stop"
 __meta__ = {
 "_edit_use_anchors_": false
 }
