@@ -1,11 +1,43 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://test.mp3" type="AudioStream" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dance"
+loop = true
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.449, 0.514, 0.941, 0.999 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.8 ), Vector2( 1, 1 ), Vector2( 1, 0.8 ), Vector2( 1, 1 ), Vector2( 1, 0.8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.507, 0.992 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -10.0, 10.0, -10.0 ]
+}
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.943909
+margin_right = -0.943909
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -13,6 +45,7 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -32.793
 
 [node name="PlayButton" type="Button" parent="."]
 margin_left = 87.1684
@@ -35,3 +68,14 @@ text = "Stop"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Character" type="Sprite" parent="."]
+position = Vector2( 765.768, 480.774 )
+rotation = 0.16574
+scale = Vector2( 1, 0.996022 )
+texture = ExtResource( 3 )
+offset = Vector2( -1.82367, -31.7738 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
+playback_speed = 0.85
+anims/dance = SubResource( 1 )

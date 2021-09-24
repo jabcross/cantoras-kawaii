@@ -15,6 +15,7 @@ func _ready():
 
 func on_play_button():
 	audio_player.play()
+	$Character/AnimationPlayer.play("dance")
 	
 func on_stop_button():
 	audio_player.stop()
