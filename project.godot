@@ -8,11 +8,31 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Beat",
+"language": "GDScript",
+"path": "res://beatmap/Beat.gd"
+}, {
+"base": "Reference",
+"class": "Song",
+"language": "GDScript",
+"path": "res://songs/Song.gd"
+} ]
+_global_script_class_icons={
+"Beat": "",
+"Song": ""
+}
+
 [application]
 
 config/name="Cantoras-kawaii"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Global.gd"
 
 [physics]
 

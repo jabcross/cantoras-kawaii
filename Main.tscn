@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://test.mp3" type="AudioStream" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://PlayButtonDancer.gd" type="Script" id=4]
+[ext_resource path="res://songs/test/testMap.gd" type="Script" id=5]
+[ext_resource path="res://beatmap/BeatSpawner.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dance"
@@ -33,6 +36,33 @@ tracks/1/keys = {
 "values": [ -10.0, 10.0, -10.0 ]
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,15 +78,17 @@ stream = ExtResource( 2 )
 volume_db = -32.793
 
 [node name="PlayButton" type="Button" parent="."]
-margin_left = 87.1684
-margin_top = 314.393
-margin_right = 256.168
-margin_bottom = 383.393
-rect_pivot_offset = Vector2( 116.711, 21.9195 )
+margin_left = 73.6426
+margin_top = 388.337
+margin_right = 242.643
+margin_bottom = 457.337
+rect_pivot_offset = Vector2( 86.8106, 67.1547 )
 text = "Play"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+target_path = NodePath("../Character")
 
 [node name="StopButton" type="Button" parent="."]
 margin_left = 500.586
@@ -71,11 +103,14 @@ __meta__ = {
 
 [node name="Character" type="Sprite" parent="."]
 position = Vector2( 765.768, 480.774 )
-rotation = 0.16574
-scale = Vector2( 1, 0.996022 )
 texture = ExtResource( 3 )
 offset = Vector2( -1.82367, -31.7738 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
-playback_speed = 0.85
+playback_speed = 0.84
 anims/dance = SubResource( 1 )
+anims/stop = SubResource( 2 )
+
+[node name="BeatSpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 455.944, 38 )
+song = ExtResource( 5 )

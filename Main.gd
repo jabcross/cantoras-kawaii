@@ -14,8 +14,10 @@ func _ready():
 	stop_button.connect("pressed", self, "on_stop_button")
 
 func on_play_button():
-	audio_player.play()
+	audio_player.play(2.5)
 	$Character/AnimationPlayer.play("dance")
+	$BeatSpawner.play()
 	
 func on_stop_button():
 	audio_player.stop()
+	$Character/AnimationPlayer.play("stop")
