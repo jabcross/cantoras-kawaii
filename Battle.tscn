@@ -1,0 +1,152 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://art/lineup.png" type="Texture" id=1]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://beatmap/BeatSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://songs/test/mandrill.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Battle.gd" type="Script" id=5]
+[ext_resource path="res://Middle.gd" type="Script" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://BeatDestroyer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art/icon_bird.png" type="Texture" id=9]
+[ext_resource path="res://art/icon_sapo.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=2]
+resource_name = "dance"
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1306.29, 21.9508, 775.083, 1117.56 )
+
+[node name="Battle" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+bpm = 164.0
+offset = 0.561
+
+[node name="BeatSpawnerLeft" parent="." instance=ExtResource( 3 )]
+position = Vector2( -121.299, 95.1365 )
+icon = ExtResource( 10 )
+target_path = NodePath("../Middle")
+delay_beats = 8
+
+[node name="BeatSpawnerRight" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2031.17, 95.137 )
+direction = Vector2( -1, 0 )
+icon = ExtResource( 9 )
+target_path = NodePath("../Middle")
+delay_beats = 8
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -31.515
+
+[node name="Middle" type="Node2D" parent="."]
+position = Vector2( 954.933, 95.1368 )
+script = ExtResource( 6 )
+
+[node name="icon" type="Sprite" parent="Middle"]
+texture = ExtResource( 7 )
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 888.334
+margin_top = 473.893
+margin_right = 936.334
+margin_bottom = 493.893
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StopButton" type="Button" parent="."]
+margin_left = 888.334
+margin_top = 513.093
+margin_right = 936.334
+margin_bottom = 533.093
+text = "Stop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DancingGodot" type="Sprite" parent="."]
+position = Vector2( 912.665, 309.704 )
+rotation = 1.5708
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+offset = Vector2( -0.842773, -1.706 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DancingGodot"]
+playback_speed = 0.84
+anims/dance = SubResource( 2 )
+anims/stop = SubResource( 3 )
+
+[node name="BeatDestroyer" parent="." instance=ExtResource( 8 )]
+direction = Vector2( -1, 0 )
+
+[node name="BeatDestroyer2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1062, 96 )
+
+[node name="PodiumLeft" type="Node2D" parent="."]
+position = Vector2( 419.526, 898.984 )
+scale = Vector2( 0.632515, 0.632515 )
+
+[node name="CharacterLeft" parent="PodiumLeft" instance=ExtResource( 2 )]
+position = Vector2( 3.92584, -9.62842 )
+
+[node name="PodiumRight" type="Node2D" parent="."]
+position = Vector2( 1507.3, 895.988 )
+scale = Vector2( 0.632515, 0.632515 )
+
+[node name="CharacterRight" parent="PodiumRight" instance=ExtResource( 2 )]
+position = Vector2( -11.209, -21.2966 )
+scale = Vector2( 0.918448, 0.834885 )
+texture = SubResource( 1 )
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="StopButton" to="." method="_on_StopButton_pressed"]

@@ -112,10 +112,5 @@ anims/stop = SubResource( 2 )
 
 [node name="BeatSpawner" parent="." instance=ExtResource( 6 )]
 position = Vector2( 398, -138 )
-bpm = 162.5
-delay = 2.4
-
-[node name="AudioStreamPlayer" parent="BeatSpawner" index="0"]
-volume_db = -26.869
 
 [editable path="BeatSpawner"]
