@@ -14,6 +14,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y += delta * 100.0
+	position.y += delta * 200.0
 	if position.y > 2000:
 		queue_free()

@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://test.mp3" type="AudioStream" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://PlayButtonDancer.gd" type="Script" id=4]
-[ext_resource path="res://songs/test/testMap.gd" type="Script" id=5]
 [ext_resource path="res://beatmap/BeatSpawner.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -73,9 +71,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-volume_db = -32.793
+[node name="target" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0.0166664, 1 )
+position = Vector2( 388.944, 292 )
+texture = ExtResource( 3 )
 
 [node name="PlayButton" type="Button" parent="."]
 margin_left = 73.6426
@@ -112,5 +111,11 @@ anims/dance = SubResource( 1 )
 anims/stop = SubResource( 2 )
 
 [node name="BeatSpawner" parent="." instance=ExtResource( 6 )]
-position = Vector2( 455.944, 38 )
-song = ExtResource( 5 )
+position = Vector2( 398, -138 )
+bpm = 162.5
+delay = 2.4
+
+[node name="AudioStreamPlayer" parent="BeatSpawner" index="0"]
+volume_db = -26.869
+
+[editable path="BeatSpawner"]

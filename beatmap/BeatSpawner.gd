@@ -1,25 +1,61 @@
+class_name BeatSpawner
 extends Node2D
 
-export var song: Script
+export onready var song = load("res://songs/test/mandrill.mp3")
+export var bpm : float = 100.0
+export var delay : float = 1.0
+var map = (
+"    x x x x x x " +
+"-               " +
+"- x x x x x x x " +
+"  x x       x xx" +
+"-           xxxx" +
+"-               " +
+"- x x x x x x x " +
+"  x x   x x x x " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+"-               " +
+""
+)
 export(float, 0, 1.0) var offset = 0.0
 
-onready var instance = song.new()
 onready var index = 0
 var start_msec
 var ms_since_song_started
-var beat_length
+onready var beat_length = 1.0 / bpm * 60 * 1000.0 / 4.0
 var p 
 var playing = false
 var last_beat = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	beat_length = 1.0 / instance.bpm * 60 * 1000.0 / 4.0
+	$AudioStreamPlayer.stream = song
 
 func play():
 	start_msec = OS.get_ticks_msec()
 	ms_since_song_started = 0.0
 	playing = true
+	yield(get_tree().create_timer(delay),"timeout")
+	$AudioStreamPlayer.play()
+
+func stop():
+	$AudioStreamPlayer.stop()
+	playing = false
 
 func _process(delta):
 	if playing:
@@ -30,9 +66,9 @@ func _process(delta):
 		last_beat = beat
 
 func on_beat():
-	if instance.map[index%instance.map.length()] != " ":
+	if map[index%map.length()] != " ":
 		spawn_beat()
-	index = index+1 % instance.map.length()
+	index = index+1 % map.length()
 
 func spawn_beat():
 	var beat = preload("res://beatmap/Beat.tscn").instance()
