@@ -4,6 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+signal point(val)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,10 +23,12 @@ func _process(_delta):
 				if beat.speed.x > 0:
 					if not beat.is_ending_of_sustain:
 						beat.hit()
+						add_point()
 						found_left_note = true
 						break;
 		if not found_left_note:
 			$"../PodiumLeft/Character".error()
+			deduct_point();
 			
 	if Input.is_action_just_pressed("right_button"):
 		var found_right_note = false
@@ -35,6 +38,14 @@ func _process(_delta):
 				if beat.speed.x < 0:
 					if not beat.is_ending_of_sustain:
 						beat.hit()
+						add_point()
 						found_right_note = true
 		if not found_right_note:
 			$"../PodiumRight/Character".error()
+			deduct_point()
+			
+func add_point():
+	emit_signal("point", 1)
+
+func deduct_point():
+	emit_signal("point", -1)

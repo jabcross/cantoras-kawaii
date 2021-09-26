@@ -15,8 +15,11 @@ var offbeat = 0
 var last_beat = 0
 var song_has_started :bool = false
 
+var start_timer : SceneTreeTimer
+
 func _ready():
-	pass 
+	yield($CalopsitaSong,"finished")
+	stop()
 	
 func play():
 	playing = true
@@ -26,18 +29,20 @@ func play():
 		i.playback_speed = bpm / 60.0
 	start_usec = OS.get_ticks_usec()
 	us_since_song_started = 0.0
-	playing = true
-	yield(get_tree().create_timer(delay),"timeout")
+	start_timer = get_tree().create_timer(delay)
+	yield(start_timer,"timeout")
 	emit_signal("song_started")
 	song_has_started = true
 	$AudioStreamPlayer.play()
 
 func stop():
 	playing = false
+	
 	$AudioStreamPlayer.stop()
-	$DancingGodot/AnimationPlayer.play("stop")
+	$CalopsitaSong.stop()
 	$PodiumLeft/Character/AnimationPlayer.play("idle")
 	$PodiumRight/Character/AnimationPlayer.play("idle")
+	get_parent().return_to_title(self)
 
 func _process(delta):
 	if playing:
@@ -55,9 +60,5 @@ func _process(delta):
 			offbeat = (offbeat + 1) % multiplier				
 		last_beat = beat
 
-func _on_PlayButton_pressed():
-	play()
-
-func _on_StopButton_pressed():
+func _on_Button_pressed():
 	stop()
-	

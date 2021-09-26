@@ -5,15 +5,13 @@
 [ext_resource path="res://songs/cantoras108bpm-005sapo.ogg" type="AudioStream" id=5]
 
 [node name="VersusFrog" instance=ExtResource( 1 )]
+bpm = 110.0
 
-[node name="BeatSpawnerLeft" parent="." index="1"]
+[node name="BeatSpawnerLeft" parent="." index="2"]
 beatmap = "res://songs/sapo.txt"
 character_path = NodePath("../PodiumLeft/Character")
 
-[node name="AudioStreamPlayer" parent="." index="3"]
+[node name="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 5 )
-
-[node name="DancingGodot" parent="." index="6"]
-rotation = 4.71239
 
 [node name="Character" parent="PodiumLeft" index="0" instance=ExtResource( 2 )]

@@ -1,5 +1,17 @@
 extends Control
-	
+
+func return_to_title(battle):
+	$Fade.show()
+	$Tween.interpolate_property($Fade,"modulate",Color.transparent,Color.white,1.0);
+	$Tween.start();
+	yield($Tween,"tween_completed")
+	battle.hide()
+	$TitleScreen.show()
+	$Tween.interpolate_property($Fade,"modulate",Color.white,Color.transparent,1.0);
+	$Tween.start();
+	yield($Tween,"tween_completed")
+	$Fade.hide()
+
 func go_to_battle(battle):
 	$Fade.show()
 	$Tween.interpolate_property($Fade,"modulate",Color.transparent,Color.white,1.0);
@@ -12,7 +24,6 @@ func go_to_battle(battle):
 	$Tween.start();
 	yield($Tween,"tween_completed")
 	$Fade.hide()
-
 
 func _on_Sapa_pressed():
 	go_to_battle($VersusFrog)

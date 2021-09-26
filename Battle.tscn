@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://songs/CalopsitaSong.gd" type="Script" id=1]
 [ext_resource path="res://songs/cantoras108bpm-001calopsita.ogg" type="AudioStream" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://songs/cantoras.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Battle.gd" type="Script" id=5]
 [ext_resource path="res://Middle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art/stage.png" type="Texture" id=7]
 [ext_resource path="res://BeatDestroyer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://art/icons/icon_sapo.png" type="Texture" id=9]
 [ext_resource path="res://art/icons/icon_calops.png" type="Texture" id=10]
 [ext_resource path="res://Calopsita.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Score.gd" type="Script" id=12]
 
 [node name="Battle" type="Control"]
 anchor_right = 1.0
@@ -21,17 +23,26 @@ __meta__ = {
 bpm = 108.0
 multiplier = 2
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Middle" parent="." instance=ExtResource( 6 )]
+position = Vector2( 954.936, 153.87 )
 
 [node name="BeatSpawnerLeft" parent="." instance=ExtResource( 3 )]
-position = Vector2( -121.299, 95.1365 )
+position = Vector2( -121.299, 153.869 )
 icon = ExtResource( 9 )
 delay_beats = 8
 target_path = NodePath("../Middle")
 beatmap = "res://songs/baixo.txt"
 
 [node name="BeatSpawnerRight" parent="." instance=ExtResource( 3 )]
-position = Vector2( 2031.17, 95.137 )
+position = Vector2( 2031.17, 153.87 )
 direction = Vector2( -1, 0 )
 icon = ExtResource( 10 )
 delay_beats = 8
@@ -43,18 +54,18 @@ character_path = NodePath("../PodiumRight/Character")
 stream = ExtResource( 4 )
 
 [node name="BeatDestroyer" parent="." instance=ExtResource( 8 )]
+position = Vector2( 832, 154.733 )
 direction = Vector2( -1, 0 )
 
 [node name="BeatDestroyer2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1062, 96 )
+position = Vector2( 1062, 154.733 )
 
 [node name="PodiumLeft" type="Node2D" parent="."]
-position = Vector2( 437.165, 969.54 )
-scale = Vector2( 1.21303, 1.21303 )
+position = Vector2( 549.292, 921.486 )
 
 [node name="PodiumRight" type="Node2D" parent="."]
-position = Vector2( 1519.9, 1014.42 )
-scale = Vector2( -1.213, 1.213 )
+position = Vector2( 1399.76, 904.963 )
+scale = Vector2( -1.05993, 1.05993 )
 
 [node name="Character" parent="PodiumRight" instance=ExtResource( 11 )]
 
@@ -62,4 +73,29 @@ scale = Vector2( -1.213, 1.213 )
 stream = ExtResource( 2 )
 script = ExtResource( 1 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = 571.311
+margin_top = 483.212
+margin_right = 659.311
+margin_bottom = 497.212
+rect_scale = Vector2( 5.75028, 4.53561 )
+align = 2
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 918.37
+margin_top = 627.375
+margin_right = 960.37
+margin_bottom = 647.375
+rect_scale = Vector2( 2.79519, 2.79519 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="song_started" from="." to="CalopsitaSong" method="_on_Battle_song_started"]
+[connection signal="point" from="Middle" to="Label" method="_on_Middle_point"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

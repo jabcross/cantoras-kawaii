@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://songs/cantoras108bpm-002morcego.ogg" type="AudioStream" id=2]
 [ext_resource path="res://art/icons/icon_morceg.png" type="Texture" id=3]
 [ext_resource path="res://Morcegue.tscn" type="PackedScene" id=4]
 
@@ -10,5 +11,8 @@
 icon = ExtResource( 3 )
 beatmap = "res://songs/morcego.txt"
 character_path = NodePath("../PodiumLeft/Character")
+
+[node name="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 2 )
 
 [node name="Character" parent="PodiumLeft" index="0" instance=ExtResource( 4 )]

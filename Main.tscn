@@ -56,8 +56,8 @@ __meta__ = {
 margin_left = -2.5199
 margin_right = 96.4801
 margin_bottom = 14.0
-rect_scale = Vector2( 19.1933, 16.2506 )
-text = "Cantoras Kawaii"
+rect_scale = Vector2( 17.1409, 20.079 )
+text = "Bichinho Sing-Off"
 __meta__ = {
 "_edit_use_anchors_": false
 }
