@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cantoras108bpm-002morcego.ogg-29d4302636dbbd9f2232081dc4ca4718.oggstr"
+
+[deps]
+
+source_file="res://songs/cantoras108bpm-002morcego.ogg"
+dest_files=[ "res://.import/cantoras108bpm-002morcego.ogg-29d4302636dbbd9f2232081dc4ca4718.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

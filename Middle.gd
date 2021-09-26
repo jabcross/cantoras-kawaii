@@ -23,6 +23,7 @@ func _process(_delta):
 					if not beat.is_ending_of_sustain:
 						beat.hit()
 						found_left_note = true
+						break;
 		if not found_left_note:
 			$"../PodiumLeft/Character".error()
 			

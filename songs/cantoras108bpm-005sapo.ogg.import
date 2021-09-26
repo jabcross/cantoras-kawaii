@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cantoras108bpm-005sapo.ogg-928d20f57ebd625fc7143b3ffeba14e4.oggstr"
+
+[deps]
+
+source_file="res://songs/cantoras108bpm-005sapo.ogg"
+dest_files=[ "res://.import/cantoras108bpm-005sapo.ogg-928d20f57ebd625fc7143b3ffeba14e4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

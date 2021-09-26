@@ -1,57 +1,15 @@
 [gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://songs/CalopsitaSong.gd" type="Script" id=1]
+[ext_resource path="res://songs/cantoras108bpm-001calopsita.ogg" type="AudioStream" id=2]
 [ext_resource path="res://beatmap/BeatSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://songs/cantoras.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Battle.gd" type="Script" id=5]
 [ext_resource path="res://Middle.tscn" type="PackedScene" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://BeatDestroyer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://art/icons/icon_sapo.png" type="Texture" id=9]
 [ext_resource path="res://art/icons/icon_calops.png" type="Texture" id=10]
-
-[sub_resource type="Animation" id=1]
-resource_name = "dance"
-loop = true
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0.0, 90.0, 180.0, 270.0 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "stop"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
+[ext_resource path="res://Calopsita.tscn" type="PackedScene" id=11]
 
 [node name="Battle" type="Control"]
 anchor_right = 1.0
@@ -78,42 +36,11 @@ direction = Vector2( -1, 0 )
 icon = ExtResource( 10 )
 delay_beats = 8
 target_path = NodePath("../Middle")
+beatmap = "res://songs/calopsita.txt"
+character_path = NodePath("../PodiumRight/Character")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -31.515
-
-[node name="PlayButton" type="Button" parent="."]
-margin_left = 888.334
-margin_top = 473.893
-margin_right = 936.334
-margin_bottom = 493.893
-text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StopButton" type="Button" parent="."]
-margin_left = 888.334
-margin_top = 513.093
-margin_right = 936.334
-margin_bottom = 533.093
-text = "Stop"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DancingGodot" type="Sprite" parent="."]
-position = Vector2( 912.665, 309.704 )
-rotation = 1.5708
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
-offset = Vector2( -0.842773, -1.706 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DancingGodot"]
-playback_speed = 0.84
-anims/dance = SubResource( 1 )
-anims/stop = SubResource( 2 )
 
 [node name="BeatDestroyer" parent="." instance=ExtResource( 8 )]
 direction = Vector2( -1, 0 )
@@ -129,5 +56,10 @@ scale = Vector2( 1.21303, 1.21303 )
 position = Vector2( 1519.9, 1014.42 )
 scale = Vector2( -1.213, 1.213 )
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="StopButton" to="." method="_on_StopButton_pressed"]
+[node name="Character" parent="PodiumRight" instance=ExtResource( 11 )]
+
+[node name="CalopsitaSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[connection signal="song_started" from="." to="CalopsitaSong" method="_on_Battle_song_started"]

@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://songs/VersusFrog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/icons/icon_sapo.png" type="Texture" id=3]
+[ext_resource path="res://art/01.png" type="Texture" id=4]
+[ext_resource path="res://VsLion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://VsBat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://VsWhale.tscn" type="PackedScene" id=7]
+[ext_resource path="res://art/icons/icon_beluga.png" type="Texture" id=8]
+[ext_resource path="res://art/icons/icon_leoa.png" type="Texture" id=9]
+[ext_resource path="res://art/icons/icon_morceg.png" type="Texture" id=10]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -16,3 +24,98 @@ __meta__ = {
 }
 
 [node name="VersusFrog" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="VersusBat" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="VersusLion" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="VersusWhale" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="TitleScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="01" type="TextureRect" parent="TitleScreen"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TitleScreen"]
+margin_left = -2.5199
+margin_right = 96.4801
+margin_bottom = 14.0
+rect_scale = Vector2( 19.1933, 16.2506 )
+text = "Cantoras Kawaii"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sapa" type="TextureButton" parent="TitleScreen"]
+margin_left = 156.23
+margin_top = 415.774
+margin_right = 284.23
+margin_bottom = 543.774
+rect_scale = Vector2( 2.43485, 2.53741 )
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Morcegue" type="TextureButton" parent="TitleScreen"]
+margin_left = 564.445
+margin_top = 675.318
+margin_right = 692.445
+margin_bottom = 803.318
+rect_scale = Vector2( 2.43485, 2.53741 )
+texture_normal = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leoa" type="TextureButton" parent="TitleScreen"]
+margin_left = 977.699
+margin_top = 433.413
+margin_right = 1105.7
+margin_bottom = 561.413
+rect_scale = Vector2( 2.43485, 2.53741 )
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Beluga" type="TextureButton" parent="TitleScreen"]
+margin_left = 536.726
+margin_top = 274.663
+margin_right = 664.726
+margin_bottom = 402.663
+rect_scale = Vector2( 2.43485, 2.53741 )
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="TitleScreen/Sapa" to="." method="_on_Sapa_pressed"]
+[connection signal="pressed" from="TitleScreen/Morcegue" to="." method="_on_Morcegue_pressed"]
+[connection signal="pressed" from="TitleScreen/Leoa" to="." method="_on_Leoa_pressed"]
+[connection signal="pressed" from="TitleScreen/Beluga" to="." method="_on_Beluga_pressed"]

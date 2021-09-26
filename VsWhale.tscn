@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://songs/cantoras108bpm-003baleia.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Beluga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/icons/icon_beluga.png" type="Texture" id=4]
+
+[node name="VsWhale" instance=ExtResource( 1 )]
+
+[node name="BeatSpawnerLeft" parent="." index="1"]
+icon = ExtResource( 4 )
+beatmap = "res://songs/baleia.txt"
+character_path = NodePath("../PodiumLeft/Character")
+
+[node name="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 2 )
+
+[node name="PodiumLeft" parent="." index="9"]
+position = Vector2( 422.046, 1019.94 )
+scale = Vector2( 2.18, 2.18026 )
+
+[node name="Character" parent="PodiumLeft" index="0" instance=ExtResource( 3 )]
