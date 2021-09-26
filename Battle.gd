@@ -8,7 +8,10 @@ onready var index = 0
 var start_msec
 var ms_since_song_started
 var playing = false
+export var multiplier: int = 1
+var offbeat = 0
 var last_beat = 0
+var song_has_started :bool = false
 
 func _ready():
 	pass 
@@ -17,30 +20,38 @@ func play():
 	playing = true
 	$DancingGodot/AnimationPlayer.play("dance")
 	$DancingGodot/AnimationPlayer.playback_speed = bpm / 60.0 / 4.0
-	for i in [$PodiumLeft/CharacterLeft/AnimationPlayer,
-			$PodiumRight/CharacterRight/AnimationPlayer]:
+	for i in [$PodiumLeft/Character/AnimationPlayer,
+			$PodiumRight/Character/AnimationPlayer]:
 		i.play("dance")
 		i.playback_speed = bpm / 60.0
 	start_msec = OS.get_ticks_msec()
 	ms_since_song_started = 0.0
 	playing = true
 	yield(get_tree().create_timer(delay),"timeout")
+	song_has_started = true
 	$AudioStreamPlayer.play()
 
 func stop():
 	playing = false
 	$AudioStreamPlayer.stop()
 	$DancingGodot/AnimationPlayer.play("stop")
-	$PodiumLeft/CharacterLeft/AnimationPlayer.play("idle")
-	$PodiumRight/CharacterRight/AnimationPlayer.play("idle")
+	$PodiumLeft/Character/AnimationPlayer.play("idle")
+	$PodiumRight/Character/AnimationPlayer.play("idle")
 
 func _process(delta):
 	if playing:
 		ms_since_song_started = OS.get_ticks_msec() - start_msec
 		var beat = int(floor(ms_since_song_started / beat_length + offset))
 		if beat != last_beat:
-			for spawner in [$BeatSpawnerLeft, $BeatSpawnerRight]:
-				spawner.on_beat()
+			if offbeat == 0:
+				for spawner in [$BeatSpawnerLeft, $BeatSpawnerRight]:
+					spawner.on_beat()
+				for c in [$PodiumLeft/Character, $PodiumRight/Character]:
+					var character : Character = c as Character 
+					if character.is_dancing:
+						character.dance()
+
+			offbeat = (offbeat + 1) % multiplier				
 		last_beat = beat
 
 func _on_PlayButton_pressed():

@@ -8,6 +8,6 @@ func _ready():
 
 func _on_Area2D_body_shape_entered(body_id, body, body_shape, local_shape):
 	var beat : Beat = body.get_parent() as Beat
-	if beat:
+	if beat and !beat.has_hit:
 		if sign(beat.speed.x) == sign(direction.x):
 			beat.fail()

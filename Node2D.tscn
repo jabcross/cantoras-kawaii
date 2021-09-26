@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/lineup.png" type="Texture" id=1]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 741.876, 167.738, 585.639, 962.365 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="lineup" type="Sprite" parent="."]
+position = Vector2( 956.48, 562.3 )
+texture = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]

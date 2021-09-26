@@ -1,116 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://PlayButtonDancer.gd" type="Script" id=4]
-[ext_resource path="res://beatmap/BeatSpawner.tscn" type="PackedScene" id=6]
-
-[sub_resource type="Animation" id=1]
-resource_name = "dance"
-loop = true
-step = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.449, 0.514, 0.941, 0.999 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0.8 ), Vector2( 1, 1 ), Vector2( 1, 0.8 ), Vector2( 1, 1 ), Vector2( 1, 0.8 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.507, 0.992 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ -10.0, 10.0, -10.0 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "stop"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
+[ext_resource path="res://songs/VersusFrog.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.943909
-margin_right = -0.943909
+margin_top = 1.33484
+margin_right = -0.94397
+margin_bottom = 1.33484
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="target" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0.0166664, 1 )
-position = Vector2( 388.944, 292 )
-texture = ExtResource( 3 )
-
-[node name="PlayButton" type="Button" parent="."]
-margin_left = 73.6426
-margin_top = 388.337
-margin_right = 242.643
-margin_bottom = 457.337
-rect_pivot_offset = Vector2( 86.8106, 67.1547 )
-text = "Play"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-target_path = NodePath("../Character")
-
-[node name="StopButton" type="Button" parent="."]
-margin_left = 500.586
-margin_top = 321.0
-margin_right = 669.586
-margin_bottom = 390.0
-rect_pivot_offset = Vector2( 84.5, 19.0878 )
-text = "Stop"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Character" type="Sprite" parent="."]
-position = Vector2( 765.768, 480.774 )
-texture = ExtResource( 3 )
-offset = Vector2( -1.82367, -31.7738 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
-playback_speed = 0.84
-anims/dance = SubResource( 1 )
-anims/stop = SubResource( 2 )
-
-[node name="BeatSpawner" parent="." instance=ExtResource( 6 )]
-position = Vector2( 398, -138 )
-
-[editable path="BeatSpawner"]
+[node name="VersusFrog" parent="." instance=ExtResource( 2 )]

@@ -1,49 +1,54 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://art/lineup.png" type="Texture" id=1]
+[ext_resource path="res://art/sapa.png" type="Texture" id=1]
+[ext_resource path="res://Character.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 104.843, 143.322, 633.219, 1004.22 )
+region = Rect2( 1834.04, 493.173, 1106.48, 1661.71 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "dance"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.227676, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ), Vector2( 1, 1 ) ]
-}
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 2979.11, 461.217, 1210.33, 1709.65 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 187.131, 752.815, 1597.8, 1434.03 )
 
-[node name="Character" type="Sprite"]
-position = Vector2( 425.448, 1053.32 )
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 4163.72, 811.065, 1777.55, 1454 )
+
+[node name="Character" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sing" type="Sprite" parent="."]
+visible = false
+position = Vector2( 19.4566, -48.2501 )
+scale = Vector2( 0.376, 0.376 )
 texture = SubResource( 1 )
+offset = Vector2( 6.35349, -642.348 )
+
+[node name="Idle" type="Sprite" parent="."]
+visible = false
+position = Vector2( -0.0348511, -0.347595 )
+scale = Vector2( 0.375912, 0.375912 )
+texture = SubResource( 2 )
+offset = Vector2( -56.3261, -715.831 )
+
+[node name="Sustain" type="Sprite" parent="."]
+visible = false
+position = Vector2( -24.5521, -34.6802 )
+scale = Vector2( -0.376, 0.376 )
+texture = SubResource( 3 )
 offset = Vector2( 8.82901, -489.584 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/dance = SubResource( 2 )
-anims/idle = SubResource( 3 )
+[node name="Error" type="Sprite" parent="."]
+position = Vector2( -92.4121, -13.1196 )
+scale = Vector2( 0.376, 0.376 )
+texture = SubResource( 4 )
+offset = Vector2( 8.82901, -489.584 )

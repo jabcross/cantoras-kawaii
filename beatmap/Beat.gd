@@ -2,6 +2,11 @@ class_name Beat
 extends Node2D
 
 var speed: Vector2
+var character
+var is_beginning_of_sustain: bool = false
+var is_ending_of_sustain: bool = false
+
+var has_hit = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -9,9 +14,13 @@ var speed: Vector2
 
 func set_texture(tex: Texture):
 	$Icon.texture = tex
-	$Particles2D.process_material = $Particles2D.process_material.duplicate()
-	$Particles2D.process_material.scale = $Icon.rect_size.x / tex.get_size().x
-	$Particles2D.texture = tex
+	$FailParticle.process_material = $FailParticle.process_material.duplicate()
+	$FailParticle.process_material.scale = $Icon.rect_size.x / tex.get_size().x
+	$FailParticle.texture = tex
+	$HitParticle.process_material = $HitParticle.process_material.duplicate()
+	$HitParticle.process_material.scale = $Icon.rect_size.x / tex.get_size().x
+	$HitParticle.texture = tex
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +33,15 @@ func _process(delta):
 
 func fail():
 	$Icon.hide()
-	$Particles2D.emitting = true
+	character.error()
+	$FailParticle.emitting = true
+	yield(get_tree().create_timer(5.0),"timeout")
+	queue_free()
+	
+func hit():
+	$Icon.hide()
+	character.sing()
+	has_hit = true
+	$HitParticle.emitting = true
 	yield(get_tree().create_timer(5.0),"timeout")
 	queue_free()
