@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "Battle",
+"language": "GDScript",
+"path": "res://Battle.gd"
+}, {
 "base": "Node2D",
 "class": "Beat",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://songs/Song.gd"
 } ]
 _global_script_class_icons={
+"Battle": "",
 "Beat": "",
 "BeatSpawner": "",
 "Character": "",

@@ -28,6 +28,13 @@ onready var leftanimation = leftcharacter.get_node("AnimationPlayer")
 onready var rightanimation = rightcharacter.get_node("AnimationPlayer")
 
 func _ready():
+	calopsitasong.volume_db = -100.0 
+	othersong.volume_db = -100.0
+	calopsitasong.play()
+	othersong.play()
+	yield(get_tree(),"idle_frame")
+	calopsitasong.volume_db = 0.0 
+	othersong.volume_db = 0.0
 	calopsitasong.stop()
 	othersong.stop()
 	yield(calopsitasong,"finished")
