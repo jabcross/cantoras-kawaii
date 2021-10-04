@@ -158,7 +158,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0.376, 0.376 ), Vector2( 0.376, 0.42 ), Vector2( 0.376, 0.376 ), Vector2( 0.376, 0.376 ) ]
 }
 
-[node name="Character" instance=ExtResource( 1 )]
+[node name="Sapa" instance=ExtResource( 1 )]
 
 [node name="Idle" parent="." index="1"]
 visible = true

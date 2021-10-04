@@ -11,5 +11,5 @@ dest_files=[ "res://.import/cantoras108bpm-003baleia.ogg-f82aaead034b4c8cb39fdcc
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

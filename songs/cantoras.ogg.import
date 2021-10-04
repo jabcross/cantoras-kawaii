@@ -11,5 +11,5 @@ dest_files=[ "res://.import/cantoras.ogg-72d0f6f2ce93f6e7b02c07542804d588.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

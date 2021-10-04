@@ -11,5 +11,5 @@ dest_files=[ "res://.import/cantoras108bpm-002morcego.ogg-29d4302636dbbd9f223208
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

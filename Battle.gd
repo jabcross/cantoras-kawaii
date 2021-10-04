@@ -1,63 +1,87 @@
+class_name Battle
 extends Control
 
 signal song_started
 
-export var bpm : float = 100.0
+export var bpm : float = 110.0
 export var delay : float = 5.5
 export(float, 0, 1.0) var offset = 0.0
-onready var beat_length = 1.0 / bpm * 60 * 1000000.0 / 4.0
+onready var beat_length = 1.0 / bpm * 60.0 / 4.0
 onready var index = 0
-var start_usec
-var us_since_song_started
-var playing = false
+var transport = 0.0
+var us_since_level_started = 0.0
+var level_has_started = false
 export var multiplier: int = 1
 var offbeat = 0
-var last_beat = 0
+var last_beat = 9999999
 var song_has_started :bool = false
 
 var start_timer : SceneTreeTimer
 
+onready var spawnerleft= $BeatSpawnerLeft
+onready var spawnerright= $BeatSpawnerRight
+onready var calopsitasong= $CalopsitaSong
+onready var othersong= $AudioStreamPlayer
+onready var leftcharacter = $PodiumLeft.get_child(0)
+onready var rightcharacter = $PodiumRight.get_child(0)
+onready var leftanimation = leftcharacter.get_node("AnimationPlayer")
+onready var rightanimation = rightcharacter.get_node("AnimationPlayer")
+
 func _ready():
-	yield($CalopsitaSong,"finished")
+	calopsitasong.stop()
+	othersong.stop()
+	yield(calopsitasong,"finished")
 	stop()
 	
 func play():
-	playing = true
-	for i in [$PodiumLeft/Character/AnimationPlayer,
-			$PodiumRight/Character/AnimationPlayer]:
+	spawnerleft.reset()
+	spawnerright.reset()
+	calopsitasong.stop()
+	othersong.stop()
+	level_has_started = true
+	song_has_started = false
+	for i in [leftanimation,rightanimation]:
 		i.play("dance")
 		i.playback_speed = bpm / 60.0
-	start_usec = OS.get_ticks_usec()
-	us_since_song_started = 0.0
-	start_timer = get_tree().create_timer(delay)
-	yield(start_timer,"timeout")
-	emit_signal("song_started")
-	song_has_started = true
-	$AudioStreamPlayer.play()
+	transport = -delay
+	us_since_level_started = OS.get_ticks_usec()
 
 func stop():
-	playing = false
+	level_has_started = false
 	
-	$AudioStreamPlayer.stop()
-	$CalopsitaSong.stop()
-	$PodiumLeft/Character/AnimationPlayer.play("idle")
-	$PodiumRight/Character/AnimationPlayer.play("idle")
+	othersong.stop()
+	calopsitasong.stop()
+	leftanimation.play("idle")
+	rightanimation.play("idle")
 	get_parent().return_to_title(self)
 
 func _process(delta):
-	if playing:
-		us_since_song_started = OS.get_ticks_usec() - start_usec
-		var beat = int(floor(us_since_song_started / beat_length + offset))
+	if not visible:
+		return
+
+	transport = float(OS.get_ticks_usec() - us_since_level_started)/1e6 - delay
+	if visible and not song_has_started and transport >= 0.0:
+		song_has_started = true
+		othersong.play(transport)
+		calopsitasong.play(transport)
+
+	if level_has_started:
+		if song_has_started:
+			print("csong: ", $CalopsitaSong.get_playback_position())
+			print("othersong: ", $AudioStreamPlayer.get_playback_position())
+			print("offset: ", transport - $AudioStreamPlayer.get_playback_position())
+		var beat = int(floor(((transport + delay) / beat_length + offset)))
 		if beat != last_beat:
 			if offbeat == 0:
-				for spawner in [$BeatSpawnerLeft, $BeatSpawnerRight]:
-					spawner.on_beat()
-				for c in [$PodiumLeft/Character, $PodiumRight/Character]:
+				for spawner in [spawnerleft,spawnerright]:
+					print(beat)
+					spawner.on_beat(beat_length)
+				for c in [leftcharacter, rightcharacter]:
 					var character : Character = c as Character 
 					if character.is_dancing:
 						character.dance()
 
-			offbeat = (offbeat + 1) % multiplier				
+			offbeat = (offbeat + 1) % multiplier
 		last_beat = beat
 
 func _on_Button_pressed():
