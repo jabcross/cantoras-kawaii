@@ -30,7 +30,6 @@ func _ready():
 var index: int = 0
 
 func on_beat(beat_length: float):
-	print("on_beat")
 	match map[index % map.length()]:
 		"-":
 			spawn_beat(index * beat_length)

@@ -28,17 +28,20 @@ onready var leftanimation = leftcharacter.get_node("AnimationPlayer")
 onready var rightanimation = rightcharacter.get_node("AnimationPlayer")
 
 func _ready():
-	calopsitasong.volume_db = -100.0 
-	othersong.volume_db = -100.0
 	calopsitasong.play()
 	othersong.play()
 	yield(get_tree(),"idle_frame")
-	calopsitasong.volume_db = 0.0 
-	othersong.volume_db = 0.0
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
 	calopsitasong.stop()
 	othersong.stop()
-	yield(calopsitasong,"finished")
-	stop()
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
+	yield(get_tree(),"idle_frame")
+	calopsitasong.stop()
+	othersong.stop()
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),false)
+
 	
 func play():
 	spawnerleft.reset()
@@ -55,7 +58,6 @@ func play():
 
 func stop():
 	level_has_started = false
-	
 	othersong.stop()
 	calopsitasong.stop()
 	leftanimation.play("idle")
@@ -73,10 +75,6 @@ func _process(delta):
 		calopsitasong.play(transport)
 
 	if level_has_started:
-		if song_has_started:
-			print("csong: ", $CalopsitaSong.get_playback_position())
-			print("othersong: ", $AudioStreamPlayer.get_playback_position())
-			print("offset: ", transport - $AudioStreamPlayer.get_playback_position())
 		var beat = int(floor(((transport + delay) / beat_length + offset)))
 		if beat != last_beat:
 			if offbeat == 0:
