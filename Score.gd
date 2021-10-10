@@ -13,4 +13,5 @@ func _ready():
 
 func _on_Middle_point(val):
 	value += val
+	if value < 0: value = 0
 	text = String(value)

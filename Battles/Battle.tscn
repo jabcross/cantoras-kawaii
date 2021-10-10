@@ -72,12 +72,12 @@ position = Vector2( -0.943359, 0 )
 stream = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 571.311
-margin_top = 483.212
-margin_right = 659.311
-margin_bottom = 497.212
+margin_left = 854.51
+margin_top = 491.0
+margin_right = 896.51
+margin_bottom = 505.0
 rect_scale = Vector2( 5.75028, 4.53561 )
-align = 2
+align = 1
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -28,26 +28,26 @@ onready var leftanimation = leftcharacter.get_node("AnimationPlayer")
 onready var rightanimation = rightcharacter.get_node("AnimationPlayer")
 
 func _ready():
-	calopsitasong.play()
-	othersong.play()
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	calopsitasong.stop()
-	othersong.stop()
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	calopsitasong.stop()
-	othersong.stop()
+#	calopsitasong.play()
+#	othersong.play()
+#	yield(get_tree(),"idle_frame")
+#	yield(get_tree(),"idle_frame")
+#	yield(get_tree(),"idle_frame")
+#	calopsitasong.stop()
+#	othersong.stop()
+#	yield(get_tree(),"idle_frame")
+#	yield(get_tree(),"idle_frame")
+#	yield(get_tree(),"idle_frame")
+#	calopsitasong.stop()
+#	othersong.stop()
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),false)
 
 	
 func play():
 	spawnerleft.reset()
 	spawnerright.reset()
-	calopsitasong.stop()
-	othersong.stop()
+#	othersong.stop()
+#	calopsitasong.stop()	
 	level_has_started = true
 	song_has_started = false
 	for i in [leftanimation,rightanimation]:
@@ -55,6 +55,9 @@ func play():
 		i.playback_speed = bpm / 60.0
 	transport = -delay
 	us_since_level_started = OS.get_ticks_usec()
+
+	yield(get_tree().create_timer(45), "timeout")
+	stop()
 
 func stop():
 	level_has_started = false

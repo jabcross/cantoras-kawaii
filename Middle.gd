@@ -35,7 +35,7 @@ func _process(_delta):
 				deduct_point();
 
 func add_point():
-	emit_signal("point", 1)
+	emit_signal("point", 100)
 
 func deduct_point():
-	emit_signal("point", -1)
+	emit_signal("point", -100)
