@@ -211,7 +211,7 @@ texture = SubResource( 1 )
 offset = Vector2( -11.2716, -849.946 )
 
 [node name="Idle" parent="." index="1"]
-position = Vector2( -7.97186, -46.3822 )
+position = Vector2( 28.0281, -46.3822 )
 texture = SubResource( 2 )
 
 [node name="Sustain" parent="." index="2"]
@@ -219,9 +219,10 @@ position = Vector2( -37.0732, -113.888 )
 texture = SubResource( 3 )
 
 [node name="Error" parent="." index="3"]
-position = Vector2( -3.40894, -2.24275 )
+position = Vector2( 121.591, -9.37801 )
 texture = SubResource( 4 )
 offset = Vector2( -101.012, -851.331 )
+flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 anims/dance = SubResource( 5 )

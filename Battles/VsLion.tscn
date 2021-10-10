@@ -20,5 +20,5 @@ position = Vector2( 369.893, 1019.99 )
 scale = Vector2( 1.67966, 1.67966 )
 
 [node name="Character" parent="PodiumLeft" index="0" instance=ExtResource( 4 )]
-position = Vector2( 105.968, -36.5841 )
-scale = Vector2( 0.868922, 0.868922 )
+position = Vector2( 108.349, -48.4914 )
+scale = Vector2( 0.9, 0.9 )

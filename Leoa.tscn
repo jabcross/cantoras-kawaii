@@ -35,7 +35,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.227676, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.9, 0.8 ), Vector2( 0.9, 0.9 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sing:visible")
@@ -206,7 +206,6 @@ tracks/4/keys = {
 [node name="Character" instance=ExtResource( 1 )]
 
 [node name="Sing" parent="." index="0"]
-visible = true
 position = Vector2( -2.37897, -3.94839 )
 texture = SubResource( 1 )
 offset = Vector2( 30.6141, -517.848 )
@@ -222,8 +221,7 @@ texture = SubResource( 3 )
 offset = Vector2( 62.1647, -560.047 )
 
 [node name="Error" parent="." index="3"]
-visible = false
-position = Vector2( -11.8929, -6.76279 )
+position = Vector2( -11.8929, -15.7628 )
 texture = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]

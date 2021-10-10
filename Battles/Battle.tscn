@@ -66,6 +66,7 @@ position = Vector2( 1399.76, 904.963 )
 scale = Vector2( -1.05993, 1.05993 )
 
 [node name="Character" parent="PodiumRight" instance=ExtResource( 11 )]
+position = Vector2( -0.943359, 0 )
 
 [node name="CalopsitaSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
