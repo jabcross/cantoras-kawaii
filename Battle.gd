@@ -18,10 +18,10 @@ var song_has_started :bool = false
 
 var start_timer : SceneTreeTimer
 
-onready var spawnerleft= $BeatSpawnerLeft
-onready var spawnerright= $BeatSpawnerRight
-onready var calopsitasong= $CalopsitaSong
-onready var othersong= $AudioStreamPlayer
+onready var spawnerleft = $BeatSpawnerLeft
+onready var spawnerright = $BeatSpawnerRight
+onready var calopsitasong = $CalopsitaSong
+onready var othersong = $AudioStreamPlayer
 onready var leftcharacter = $PodiumLeft.get_child(0)
 onready var rightcharacter = $PodiumRight.get_child(0)
 onready var leftanimation = leftcharacter.get_node("AnimationPlayer")
@@ -56,8 +56,16 @@ func play():
 	transport = -delay
 	us_since_level_started = OS.get_ticks_usec()
 
-	yield(get_tree().create_timer(45), "timeout")
-	stop()
+	yield(get_tree().create_timer(43), "timeout")
+	finish()
+
+func finish():
+	level_has_started = false
+	othersong.stop()
+	calopsitasong.stop()
+	leftanimation.play("idle")
+	rightanimation.play("idle")
+	get_parent().show_score(self)
 
 func stop():
 	level_has_started = false

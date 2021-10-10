@@ -15,8 +15,8 @@ func _ready():
 func _process(_delta):
 	if not get_parent().song_has_started:
 		return
-	for pair in  [["left_button",$"../PodiumLeft/Character"],
-				["right_button",$"../PodiumRight/Character"]]:
+	for pair in  [["left_button",get_parent().leftcharacter],
+				["right_button",get_parent().rightcharacter]]:
 		var button = pair[0]
 		var character = pair[1]
 		if Input.is_action_just_pressed(button):

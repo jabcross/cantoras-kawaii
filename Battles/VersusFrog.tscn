@@ -8,7 +8,7 @@
 
 [node name="BeatSpawnerLeft" parent="." index="2"]
 beatmap = "res://songs/sapo.txt"
-character_path = NodePath("../PodiumLeft/Character")
+character_path = NodePath("../PodiumLeft/Sapa")
 
 [node name="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 5 )
@@ -16,4 +16,4 @@ stream = ExtResource( 5 )
 [node name="PodiumLeft" parent="." index="7"]
 position = Vector2( 550.292, 902.486 )
 
-[node name="Character" parent="PodiumLeft" index="0" instance=ExtResource( 2 )]
+[node name="Sapa" parent="PodiumLeft" index="0" instance=ExtResource( 2 )]

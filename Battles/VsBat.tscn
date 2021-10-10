@@ -10,9 +10,9 @@
 [node name="BeatSpawnerLeft" parent="." index="2"]
 icon = ExtResource( 3 )
 beatmap = "res://songs/morcego.txt"
-character_path = NodePath("../PodiumLeft/Character")
+character_path = NodePath("../PodiumLeft/Morcegue")
 
 [node name="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 2 )
 
-[node name="Character" parent="PodiumLeft" index="0" instance=ExtResource( 4 )]
+[node name="Morcegue" parent="PodiumLeft" index="0" instance=ExtResource( 4 )]

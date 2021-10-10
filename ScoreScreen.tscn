@@ -1,0 +1,221 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Morcegue.tscn" type="PackedScene" id=1]
+[ext_resource path="res://songs/cantoras108bpm-001calopsita.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Leoa.tscn" type="PackedScene" id=3]
+[ext_resource path="res://songs/cantoras.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sapa.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Beluga.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art/score_screen.png" type="Texture" id=7]
+[ext_resource path="res://ScoreScreen.gd" type="Script" id=8]
+
+[node name="ScoreScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="CalopsitaSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="PodiumLeft" type="Node2D" parent="."]
+position = Vector2( 582.292, 1018.49 )
+scale = Vector2( 2.5, 2.5 )
+
+[node name="Baleia" parent="PodiumLeft" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 0, -16.0009 )
+scale = Vector2( 1.1, 1.1 )
+
+[node name="Idle" parent="PodiumLeft/Baleia" index="1"]
+visible = false
+
+[node name="Sustain" parent="PodiumLeft/Baleia" index="2"]
+visible = true
+
+[node name="Leoa" parent="PodiumLeft" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 3.60001, 4.80005 )
+
+[node name="Sustain" parent="PodiumLeft/Leoa" index="2"]
+visible = true
+
+[node name="Error" parent="PodiumLeft/Leoa" index="3"]
+visible = false
+
+[node name="Morcegue" parent="PodiumLeft" instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 7.59998, -43.2 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Idle" parent="PodiumLeft/Morcegue" index="1"]
+visible = false
+
+[node name="Sustain" parent="PodiumLeft/Morcegue" index="2"]
+visible = true
+flip_h = true
+
+[node name="Sapa" parent="PodiumLeft" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 38.8, -52.4003 )
+scale = Vector2( 0.65, 0.65 )
+
+[node name="Idle" parent="PodiumLeft/Sapa" index="1"]
+visible = false
+
+[node name="Sustain" parent="PodiumLeft/Sapa" index="2"]
+visible = true
+position = Vector2( -75.0137, -34.6802 )
+
+[node name="TotalBeatsLabel" type="Label" parent="."]
+margin_left = 1106.0
+margin_top = 272.0
+margin_right = 1218.0
+margin_bottom = 286.0
+rect_scale = Vector2( 4, 4 )
+text = "TOTAL BEATS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TotalBeats" type="Label" parent="."]
+visible = false
+margin_left = 1556.25
+margin_top = 272.0
+margin_right = 1580.25
+margin_bottom = 286.0
+rect_scale = Vector2( 4, 4 )
+text = "000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BeatsHitLabel" type="Label" parent="."]
+margin_left = 1106.0
+margin_top = 362.612
+margin_right = 1219.0
+margin_bottom = 376.612
+rect_scale = Vector2( 4, 4 )
+text = "BEATS HIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BeatsHit" type="Label" parent="."]
+visible = false
+margin_left = 1556.25
+margin_top = 361.836
+margin_right = 1580.25
+margin_bottom = 375.836
+rect_scale = Vector2( 4, 4 )
+text = "000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BeatsMissedLabel" type="Label" parent="."]
+margin_left = 1106.0
+margin_top = 457.0
+margin_right = 1219.0
+margin_bottom = 471.0
+rect_scale = Vector2( 4, 4 )
+text = "BEATS MISSED"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BeatsMissed" type="Label" parent="."]
+visible = false
+margin_left = 1556.25
+margin_top = 456.336
+margin_right = 1580.25
+margin_bottom = 470.336
+rect_scale = Vector2( 4, 4 )
+text = "000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinalScoreLabel" type="Label" parent="."]
+margin_left = 1106.0
+margin_top = 546.797
+margin_right = 1219.0
+margin_bottom = 560.797
+rect_scale = Vector2( 4, 4 )
+text = "FINAL SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinalScore" type="Label" parent="."]
+visible = false
+margin_left = 1495.84
+margin_top = 546.133
+margin_right = 1535.84
+margin_bottom = 560.133
+rect_scale = Vector2( 4, 4 )
+text = "00000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grade" type="Label" parent="."]
+visible = false
+margin_left = 1207.78
+margin_top = 643.284
+margin_right = 1221.78
+margin_bottom = 657.284
+rect_scale = Vector2( 18, 18 )
+text = "S"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Percentage" type="Label" parent="."]
+visible = false
+margin_left = 1497.51
+margin_top = 773.056
+margin_right = 1537.51
+margin_bottom = 787.056
+rect_scale = Vector2( 4, 4 )
+text = "000%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1273.44
+margin_top = 880.995
+margin_right = 1356.44
+margin_bottom = 900.995
+rect_scale = Vector2( 2.79519, 2.79519 )
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[editable path="PodiumLeft/Baleia"]
+[editable path="PodiumLeft/Leoa"]
+[editable path="PodiumLeft/Morcegue"]
+[editable path="PodiumLeft/Sapa"]

@@ -14,6 +14,8 @@ var map: String = "."
 export var character_path: NodePath
 var character
 
+signal beat
+
 func reset():
 	index = 0;
 	for child in get_children():
@@ -26,6 +28,8 @@ func _ready():
 		file.open(beatmap,File.READ)
 		map = file.get_as_text().replace("\n","")
 		file.close()
+	
+	connect("beat", get_parent().get_node("Label"), "add_beat")
 		
 var index: int = 0
 
@@ -42,4 +46,5 @@ func spawn_beat(target_transport: float):
 	beat.target_beat = beat.spawn_beat + get_parent().delay
 	beat.character = character
 	add_child(beat)
+	emit_signal("beat")
 	beat.set_texture(icon)
