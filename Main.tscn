@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Battles/VersusFrog.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://art/icons/icon_beluga.png" type="Texture" id=8]
 [ext_resource path="res://art/icons/icon_leoa.png" type="Texture" id=9]
 [ext_resource path="res://art/icons/icon_morceg.png" type="Texture" id=10]
+[ext_resource path="res://ScoreScreen.tscn" type="PackedScene" id=11]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -105,6 +106,9 @@ texture_normal = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScoreScreen" parent="." instance=ExtResource( 11 )]
+visible = false
 
 [node name="Fade" type="ColorRect" parent="."]
 visible = false
