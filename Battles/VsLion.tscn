@@ -16,8 +16,8 @@ character_path = NodePath("../PodiumLeft/Character")
 stream = ExtResource( 5 )
 
 [node name="PodiumLeft" parent="." index="7"]
-position = Vector2( 369.893, 1019.99 )
-scale = Vector2( 1.67966, 1.67966 )
+position = Vector2( 387.893, 1003.99 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Character" parent="PodiumLeft" index="0" instance=ExtResource( 4 )]
 position = Vector2( 108.349, -48.4914 )
