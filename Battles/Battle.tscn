@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://art/fonts/Rubik-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://songs/cantoras108bpm-001calopsita.ogg" type="AudioStream" id=2]
 [ext_resource path="res://beatmap/BeatSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://songs/cantoras.ogg" type="AudioStream" id=4]
@@ -11,6 +12,10 @@
 [ext_resource path="res://art/icons/icon_calops.png" type="Texture" id=10]
 [ext_resource path="res://Calopsita.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Score.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
 
 [node name="Battle" type="Control"]
 anchor_right = 1.0
@@ -72,11 +77,12 @@ position = Vector2( -0.943359, 0 )
 stream = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 854.51
-margin_top = 491.0
-margin_right = 896.51
-margin_bottom = 505.0
-rect_scale = Vector2( 5.75028, 4.53561 )
+margin_left = 875.246
+margin_top = 481.0
+margin_right = 1080.25
+margin_bottom = 557.0
+custom_fonts/font = SubResource( 1 )
+text = "00000"
 align = 1
 script = ExtResource( 12 )
 __meta__ = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Battles/VersusFrog.tscn" type="PackedScene" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://art/icons/icon_leoa.png" type="Texture" id=9]
 [ext_resource path="res://art/icons/icon_morceg.png" type="Texture" id=10]
 [ext_resource path="res://ScoreScreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://art/fonts/Rubik-SemiBold.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 208
+font_data = ExtResource( 12 )
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -54,54 +59,57 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TitleScreen"]
-margin_left = -2.5199
-margin_right = 96.4801
-margin_bottom = 14.0
-rect_scale = Vector2( 17.1409, 20.079 )
-text = "Bichinho Sing-Off"
+margin_left = 87.8599
+margin_top = 56.5682
+margin_right = 1809.86
+margin_bottom = 553.568
+custom_fonts/font = SubResource( 1 )
+text = "Bichinho
+Sing-Off"
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sapa" type="TextureButton" parent="TitleScreen"]
-margin_left = 156.23
-margin_top = 415.774
-margin_right = 284.23
-margin_bottom = 543.774
-rect_scale = Vector2( 2.43485, 2.53741 )
+margin_left = 83.2096
+margin_top = 679.933
+margin_right = 211.21
+margin_bottom = 807.933
+rect_scale = Vector2( 2, 2 )
 texture_normal = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Morcegue" type="TextureButton" parent="TitleScreen"]
-margin_left = 564.445
-margin_top = 675.318
-margin_right = 692.445
-margin_bottom = 803.318
-rect_scale = Vector2( 2.43485, 2.53741 )
+margin_left = 412.054
+margin_top = 675.968
+margin_right = 540.054
+margin_bottom = 803.968
+rect_scale = Vector2( 2, 2 )
 texture_normal = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Leoa" type="TextureButton" parent="TitleScreen"]
-margin_left = 977.699
-margin_top = 433.413
-margin_right = 1105.7
-margin_bottom = 561.413
-rect_scale = Vector2( 2.43485, 2.53741 )
+margin_left = 1057.07
+margin_top = 678.523
+margin_right = 1185.07
+margin_bottom = 806.523
+rect_scale = Vector2( 2, 2 )
 texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Beluga" type="TextureButton" parent="TitleScreen"]
-margin_left = 536.726
-margin_top = 274.663
-margin_right = 664.726
-margin_bottom = 402.663
-rect_scale = Vector2( 2.43485, 2.53741 )
+margin_left = 743.088
+margin_top = 681.688
+margin_right = 871.088
+margin_bottom = 809.688
+rect_scale = Vector2( 2, 2 )
 texture_normal = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
