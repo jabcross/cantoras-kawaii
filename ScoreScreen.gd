@@ -33,7 +33,10 @@ func update_scores(score, total_beats, beats_hit, character):
 	$FinalScore.text = String(score)
 	
 	var ideal_score = total_beats * 100
-	var percentage = stepify(float(score) / float(ideal_score), 0.01)
+	
+	var percentage = 0
+	
+	if ideal_score != 0: percentage = stepify(float(score) / float(ideal_score), 0.01)
 	
 	$Percentage.text = String(percentage * 100) + "%"
 	

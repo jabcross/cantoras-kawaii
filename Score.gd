@@ -17,3 +17,9 @@ func _on_Middle_point(val):
 	points += val
 	if points < 0: points = 0
 	text = String(points)
+
+func reset():
+	points = 0
+	total_beats = 0
+	beats_hit = 0
+	text = "0"

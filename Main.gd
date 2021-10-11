@@ -11,6 +11,7 @@ func return_to_title(battle):
 	$Tween.start();
 	yield($Tween,"tween_completed")
 	$Fade.hide()
+	battle.get_node("Label").reset()
 
 func go_to_battle(battle):
 	$Fade.show()
@@ -42,6 +43,7 @@ func show_score(battle):
 	$Tween.start();
 	yield($Tween,"tween_completed")
 	$Fade.hide()
+	battle.get_node("Label").reset()
 
 func _on_Sapa_pressed():
 	go_to_battle($VersusFrog)

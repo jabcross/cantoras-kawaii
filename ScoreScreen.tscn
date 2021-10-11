@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Morcegue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://songs/cantoras108bpm-001calopsita.ogg" type="AudioStream" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://ScoreScreen.gd" type="Script" id=8]
 [ext_resource path="res://art/fonts/Rubik-SemiBold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://art/fonts/Rubik-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Label.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 52
@@ -225,6 +226,19 @@ margin_bottom = 835.056
 custom_fonts/font = SubResource( 7 )
 text = "000%"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 1510.97
+margin_top = 773.056
+margin_right = 1656.97
+margin_bottom = 835.056
+custom_fonts/font = SubResource( 7 )
+align = 2
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

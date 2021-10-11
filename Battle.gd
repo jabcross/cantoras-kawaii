@@ -27,6 +27,8 @@ onready var rightcharacter = $PodiumRight.get_child(0)
 onready var leftanimation = leftcharacter.get_node("AnimationPlayer")
 onready var rightanimation = rightcharacter.get_node("AnimationPlayer")
 
+var back = false
+
 func _ready():
 #	calopsitasong.play()
 #	othersong.play()
@@ -44,6 +46,7 @@ func _ready():
 
 	
 func play():
+	back = false
 	spawnerleft.reset()
 	spawnerright.reset()
 #	othersong.stop()
@@ -56,16 +59,8 @@ func play():
 	transport = -delay
 	us_since_level_started = OS.get_ticks_usec()
 
-	yield(get_tree().create_timer(43), "timeout")
-	finish()
-
-func finish():
-	level_has_started = false
-	othersong.stop()
-	calopsitasong.stop()
-	leftanimation.play("idle")
-	rightanimation.play("idle")
-	get_parent().show_score(self)
+	yield($CalopsitaSong, "finished")
+	stop()
 
 func stop():
 	level_has_started = false
@@ -73,7 +68,8 @@ func stop():
 	calopsitasong.stop()
 	leftanimation.play("idle")
 	rightanimation.play("idle")	
-	get_parent().return_to_title(self)
+	if back: get_parent().return_to_title(self)
+	else: get_parent().show_score(self)
 
 func _process(delta):
 	if not visible:
@@ -101,9 +97,5 @@ func _process(delta):
 		last_beat = beat
 
 func _on_Button_pressed():
-	$Label.points = 0
-	$Label.total_beats = 0
-	$Label.beats_hit = 0
-	$Label.text = "0"
-	
+	back = true
 	stop()
