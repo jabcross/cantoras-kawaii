@@ -72,7 +72,7 @@ func stop():
 	othersong.stop()
 	calopsitasong.stop()
 	leftanimation.play("idle")
-	rightanimation.play("idle")
+	rightanimation.play("idle")	
 	get_parent().return_to_title(self)
 
 func _process(delta):
@@ -101,4 +101,9 @@ func _process(delta):
 		last_beat = beat
 
 func _on_Button_pressed():
+	$Label.points = 0
+	$Label.total_beats = 0
+	$Label.beats_hit = 0
+	$Label.text = "0"
+	
 	stop()
