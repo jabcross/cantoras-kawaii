@@ -46,7 +46,7 @@ func show_score(battle):
 	scoring.reset()
 	
 func show_credits():
-	scene_transition($SelectionScreen, $Choir)
+	scene_transition($ScoreScreen, $Choir)
 	get_node("Choir/ChoirSong").play()
 	yield(get_tree().create_timer(84), "timeout")
 	scene_transition($Choir, $Credits)

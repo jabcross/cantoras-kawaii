@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Battles/VersusFrog.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://art/selection_screen.png" type="Texture" id=19]
 [ext_resource path="res://ChoirScene.tscn" type="PackedScene" id=20]
 [ext_resource path="res://art/credits.png" type="Texture" id=21]
+[ext_resource path="res://art/button_1.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 76
@@ -39,15 +40,15 @@ outline_color = Color( 0.894118, 0.286275, 0.513726, 1 )
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 36
-font_data = ExtResource( 18 )
+size = 60
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 32
+size = 30
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 48
+size = 42
 font_data = ExtResource( 18 )
 
 [node name="Main" type="Control"]
@@ -274,13 +275,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="TitleScreen"]
-margin_left = 540.177
-margin_top = 715.339
-margin_right = 1017.18
-margin_bottom = 944.339
+[node name="Sprite" type="Sprite" parent="TitleScreen"]
+position = Vector2( 762.126, 753.443 )
+scale = Vector2( 0.891497, 0.883006 )
+texture = ExtResource( 22 )
+
+[node name="Start" type="LinkButton" parent="TitleScreen"]
+margin_left = 548.183
+margin_top = 733.726
+margin_right = 940.183
+margin_bottom = 876.726
+rect_rotation = 6.7
 custom_fonts/font = SubResource( 4 )
 text = "START"
+underline = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -289,7 +297,6 @@ __meta__ = {
 visible = false
 
 [node name="Credits" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -304,11 +311,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="Credits"]
+position = Vector2( 709.816, 888.783 )
+scale = Vector2( 0.726659, 0.631075 )
+texture = ExtResource( 22 )
+flip_h = true
+
 [node name="03" type="TextureRect" parent="Credits"]
 margin_left = 238.0
-margin_top = 80.0
+margin_top = 75.0
 margin_right = 1221.0
-margin_bottom = 910.0
+margin_bottom = 820.0
 texture = ExtResource( 21 )
 expand = true
 __meta__ = {
@@ -317,9 +330,9 @@ __meta__ = {
 
 [node name="Label" type="RichTextLabel" parent="Credits"]
 margin_left = 312.0
-margin_top = 254.0
+margin_top = 225.029
 margin_right = 1145.0
-margin_bottom = 845.0
+margin_bottom = 762.029
 custom_fonts/bold_font = SubResource( 5 )
 custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
@@ -351,13 +364,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayAgain" type="Button" parent="Credits"]
-margin_left = 579.763
-margin_top = 906.436
-margin_right = 852.763
-margin_bottom = 998.436
+[node name="PlayAgain" type="LinkButton" parent="Credits"]
+margin_left = 544.485
+margin_top = 926.343
+margin_right = 903.485
+margin_bottom = 998.343
+rect_rotation = -6.5
 custom_fonts/font = SubResource( 4 )
 text = "PLAY AGAIN"
+underline = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

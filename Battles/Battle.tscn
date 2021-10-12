@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://art/fonts/Rubik-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://songs/cantoras108bpm-001calopsita.ogg" type="AudioStream" id=2]
@@ -12,10 +12,16 @@
 [ext_resource path="res://art/icons/icon_calops.png" type="Texture" id=10]
 [ext_resource path="res://Calopsita.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Score.gd" type="Script" id=12]
+[ext_resource path="res://art/fonts/Rubik-SemiBold.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://art/button_1.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 13 )
 
 [node name="Battle" type="Control"]
 anchor_right = 1.0
@@ -89,13 +95,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 918.37
-margin_top = 627.375
-margin_right = 960.37
-margin_bottom = 647.375
-rect_scale = Vector2( 2.79519, 2.79519 )
-text = "Back"
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 970.347, 614.859 )
+scale = Vector2( 0.29108, 0.29108 )
+texture = ExtResource( 14 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 0, 76.6069, 649.905, 389.818 )
+
+[node name="Button" type="LinkButton" parent="."]
+margin_left = 926.082
+margin_top = 612.49
+margin_right = 1024.08
+margin_bottom = 655.49
+rect_rotation = -6.8
+custom_fonts/font = SubResource( 2 )
+text = "BACK"
+underline = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

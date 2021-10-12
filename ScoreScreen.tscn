@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Morcegue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://songs/cantoras108bpm-001calopsita.ogg" type="AudioStream" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://songs/cantoras.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Sapa.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Beluga.tscn" type="PackedScene" id=6]
-[ext_resource path="res://art/score_screen.png" type="Texture" id=7]
+[ext_resource path="res://art/score_screen2.png" type="Texture" id=7]
 [ext_resource path="res://ScoreScreen.gd" type="Script" id=8]
 [ext_resource path="res://art/fonts/Rubik-SemiBold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://art/fonts/Rubik-Regular.ttf" type="DynamicFontData" id=10]
@@ -34,13 +34,17 @@ size = 52
 font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 196
+size = 160
 outline_size = 18
 outline_color = Color( 0.894118, 0.286275, 0.513726, 1 )
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 52
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 48
 font_data = ExtResource( 9 )
 
 [node name="ScoreScreen" type="Control"]
@@ -54,6 +58,8 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.8877
+margin_right = 1.8877
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,9 +135,9 @@ __meta__ = {
 
 [node name="BeatsHitLabel" type="Label" parent="."]
 margin_left = 1106.0
-margin_top = 353.612
+margin_top = 343.612
 margin_right = 1364.0
-margin_bottom = 415.612
+margin_bottom = 405.612
 custom_fonts/font = SubResource( 3 )
 text = "BEATS HIT"
 __meta__ = {
@@ -140,9 +146,9 @@ __meta__ = {
 
 [node name="BeatsHit" type="Label" parent="."]
 margin_left = 1556.25
-margin_top = 352.836
+margin_top = 342.836
 margin_right = 1661.25
-margin_bottom = 414.836
+margin_bottom = 404.836
 custom_fonts/font = SubResource( 2 )
 text = "000"
 align = 2
@@ -152,9 +158,9 @@ __meta__ = {
 
 [node name="BeatsMissedLabel" type="Label" parent="."]
 margin_left = 1106.0
-margin_top = 448.0
+margin_top = 433.0
 margin_right = 1470.0
-margin_bottom = 510.0
+margin_bottom = 495.0
 custom_fonts/font = SubResource( 4 )
 text = "BEATS MISSED"
 __meta__ = {
@@ -163,9 +169,9 @@ __meta__ = {
 
 [node name="BeatsMissed" type="Label" parent="."]
 margin_left = 1556.25
-margin_top = 447.336
+margin_top = 432.336
 margin_right = 1661.25
-margin_bottom = 509.336
+margin_bottom = 494.336
 custom_fonts/font = SubResource( 2 )
 text = "000"
 align = 2
@@ -175,9 +181,9 @@ __meta__ = {
 
 [node name="FinalScoreLabel" type="Label" parent="."]
 margin_left = 1106.0
-margin_top = 541.797
+margin_top = 521.797
 margin_right = 1431.0
-margin_bottom = 603.797
+margin_bottom = 583.797
 custom_fonts/font = SubResource( 5 )
 text = "FINAL SCORE"
 __meta__ = {
@@ -186,9 +192,9 @@ __meta__ = {
 
 [node name="FinalScore" type="Label" parent="."]
 margin_left = 1487.24
-margin_top = 541.133
+margin_top = 521.133
 margin_right = 1662.24
-margin_bottom = 603.133
+margin_bottom = 583.133
 custom_fonts/font = SubResource( 2 )
 text = "00000"
 align = 2
@@ -197,10 +203,10 @@ __meta__ = {
 }
 
 [node name="Grade" type="Label" parent="."]
-margin_left = 1208.0
-margin_top = 643.0
-margin_right = 1336.0
-margin_bottom = 876.0
+margin_left = 1214.52
+margin_top = 598.714
+margin_right = 1342.52
+margin_bottom = 788.714
 custom_fonts/font = SubResource( 6 )
 text = "S"
 valign = 1
@@ -209,10 +215,10 @@ __meta__ = {
 }
 
 [node name="Percentage" type="Label" parent="."]
-margin_left = 1510.97
-margin_top = 773.056
-margin_right = 1656.97
-margin_bottom = 835.056
+margin_left = 1513.49
+margin_top = 710.264
+margin_right = 1659.49
+margin_bottom = 772.264
 custom_fonts/font = SubResource( 7 )
 text = "000%"
 align = 2
@@ -233,13 +239,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 1276.11
-margin_top = 913.031
-margin_right = 1359.11
-margin_bottom = 933.031
-rect_scale = Vector2( 2.79519, 2.79519 )
+[node name="Button" type="LinkButton" parent="."]
+margin_left = 1253.32
+margin_top = 896.896
+margin_right = 1498.32
+margin_bottom = 953.896
+rect_rotation = -2.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.886275, 0.301961, 0.517647, 1 )
 text = "CONTINUE"
+underline = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
