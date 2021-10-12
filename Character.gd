@@ -34,7 +34,7 @@ func error():
 	$Idle.hide()
 	$Sustain.hide()
 	$Error.show()
-	$AnimationPlayer.seek(0)	
+#	$AnimationPlayer.seek(0)
 	$AnimationPlayer.play("error")
 	is_dancing = false
 	yield($AnimationPlayer,"animation_finished")

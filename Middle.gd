@@ -1,9 +1,5 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 signal point(val)
 
 # Called when the node enters the scene tree for the first time.
@@ -13,8 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if not get_parent().song_has_started:
-		return
+#	if not get_parent().song_has_started:
+#		return
 	for pair in  [["left_button",get_parent().leftcharacter],
 				["right_button",get_parent().rightcharacter]]:
 		var button = pair[0]

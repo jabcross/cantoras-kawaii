@@ -43,7 +43,7 @@ func _ready():
 #	calopsitasong.stop()
 #	othersong.stop()
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),false)
-
+	calopsitasong.connect("finished", self, "stop")
 	
 func play():
 	back = false
@@ -59,17 +59,18 @@ func play():
 	transport = -delay
 	us_since_level_started = OS.get_ticks_usec()
 
-	yield($CalopsitaSong, "finished")
-	stop()
-
 func stop():
 	level_has_started = false
-	if calopsitasong.is_playing(): othersong.stop()
+	if othersong.is_playing(): othersong.stop()
 	if calopsitasong.is_playing(): calopsitasong.stop()
 	leftanimation.play("idle")
 	rightanimation.play("idle")
 	if back: get_parent().return_to_selection_screen(self)
 	else: get_parent().show_score(self)
+	
+#	for spawner in [spawnerleft, spawnerright]:
+#		for child in spawner.get_children():
+#			child.queue_free()
 
 func _process(delta):
 	if not visible:
@@ -86,7 +87,7 @@ func _process(delta):
 		if beat != last_beat:
 			if offbeat == 0:
 				for spawner in [spawnerleft,spawnerright]:
-					print(beat)
+#					print(beat)
 					spawner.on_beat(beat_length)
 				for c in [leftcharacter, rightcharacter]:
 					var character : Character = c as Character 

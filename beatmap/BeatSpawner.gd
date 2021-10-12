@@ -1,7 +1,7 @@
 class_name BeatSpawner
 extends Node2D
 
-export var direction: Vector2 = Vector2(1,0)
+#export var direction: Vector2 = Vector2(1,0)
 export var icon: Texture
 export (int, 1, 16) var delay_beats: int = 1
 export var target_path: NodePath

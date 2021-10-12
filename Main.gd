@@ -14,7 +14,10 @@ extends Control
 #	battle.get_node("Label").reset()
 
 func return_to_selection_screen(scene):
-	if get_node("SelectionScreen/BatGrade").text == "S" and get_node("SelectionScreen/FrogGrade").text == "S" and get_node("SelectionScreen/WhaleGrade").text == "S" and get_node("SelectionScreen/LionGrade").text == "S":
+	if (get_node("SelectionScreen/BatGrade").text == "S" and
+		get_node("SelectionScreen/FrogGrade").text == "S" and
+		get_node("SelectionScreen/WhaleGrade").text == "S" and
+		get_node("SelectionScreen/LionGrade").text == "S"):
 		show_credits()
 	else:
 		scene_transition(scene, $SelectionScreen)
@@ -40,7 +43,8 @@ func show_score(battle):
 	var score_label = $SelectionScreen.get_node(battle.name.substr(6) + "Score")
 	var grade_label = $SelectionScreen.get_node(battle.name.substr(6) + "Grade")
 
-	$ScoreScreen.update_scores(scoring.points, scoring.total_beats, scoring.beats_hit, battle.leftcharacter.name, score_label, grade_label)
+	$ScoreScreen.update_scores(scoring.points, scoring.total_beats, 
+		scoring.beats_hit, battle.leftcharacter.name, score_label, grade_label)
 		
 	scene_transition(battle, $ScoreScreen)
 	scoring.reset()

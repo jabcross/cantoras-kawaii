@@ -33,7 +33,7 @@ func _ready():
 	spawn_pos = global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# set position
 	var full_progress_time = target_beat - spawn_beat
 	var current_progress_time = get_parent().get_parent().transport - spawn_beat
