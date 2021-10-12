@@ -64,11 +64,11 @@ func play():
 
 func stop():
 	level_has_started = false
-	othersong.stop()
-	calopsitasong.stop()
+	if calopsitasong.is_playing(): othersong.stop()
+	if calopsitasong.is_playing(): calopsitasong.stop()
 	leftanimation.play("idle")
-	rightanimation.play("idle")	
-	if back: get_parent().return_to_title(self)
+	rightanimation.play("idle")
+	if back: get_parent().return_to_selection_screen(self)
 	else: get_parent().show_score(self)
 
 func _process(delta):

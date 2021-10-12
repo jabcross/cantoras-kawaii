@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Morcegue.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/generic_bg.png" type="Texture" id=2]
+[ext_resource path="res://Leoa.tscn" type="PackedScene" id=3]
+[ext_resource path="res://songs/cantoras-tudo132bpm.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sapa.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Beluga.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Calopsita.tscn" type="PackedScene" id=10]
+
+[node name="Choir" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChoirSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1610.02
+margin_top = 953.87
+margin_right = 1693.02
+margin_bottom = 973.87
+rect_scale = Vector2( 2.79519, 2.79519 )
+text = "Skip >>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sapa" parent="." instance=ExtResource( 5 )]
+position = Vector2( 349.61, 859.075 )
+
+[node name="Sustain" parent="Sapa" index="2"]
+flip_h = true
+
+[node name="Morcegue" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1593.04, 854.529 )
+
+[node name="Idle" parent="Morcegue" index="1"]
+visible = false
+
+[node name="Sustain" parent="Morcegue" index="2"]
+visible = true
+flip_h = true
+
+[node name="Beluga" parent="." instance=ExtResource( 6 )]
+position = Vector2( 621.221, 881.29 )
+scale = Vector2( 1.8, 1.8 )
+
+[node name="Sustain" parent="Beluga" index="2"]
+flip_h = true
+
+[node name="Leoa" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1283.85, 902.167 )
+scale = Vector2( 1.7, 1.7 )
+
+[node name="Sustain" parent="Leoa" index="2"]
+visible = true
+
+[node name="Error" parent="Leoa" index="3"]
+visible = false
+
+[node name="Calopsita" parent="." instance=ExtResource( 10 )]
+position = Vector2( 930.791, 874.773 )
+scale = Vector2( 1.3, 1.3 )
+
+[node name="Idle" parent="Calopsita" index="1"]
+visible = false
+
+[node name="Sustain" parent="Calopsita" index="2"]
+visible = true
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[editable path="Sapa"]
+[editable path="Morcegue"]
+[editable path="Beluga"]
+[editable path="Leoa"]
+[editable path="Calopsita"]

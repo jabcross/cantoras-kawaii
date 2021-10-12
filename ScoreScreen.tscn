@@ -74,12 +74,6 @@ visible = false
 position = Vector2( 0, -16.0009 )
 scale = Vector2( 1.1, 1.1 )
 
-[node name="Idle" parent="PodiumLeft/Baleia" index="1"]
-visible = false
-
-[node name="Sustain" parent="PodiumLeft/Baleia" index="2"]
-visible = true
-
 [node name="Leoa" parent="PodiumLeft" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 3.60001, 4.80005 )
@@ -107,11 +101,7 @@ visible = false
 position = Vector2( 38.8, -52.4003 )
 scale = Vector2( 0.65, 0.65 )
 
-[node name="Idle" parent="PodiumLeft/Sapa" index="1"]
-visible = false
-
 [node name="Sustain" parent="PodiumLeft/Sapa" index="2"]
-visible = true
 position = Vector2( -75.0137, -34.6802 )
 
 [node name="TotalBeatsLabel" type="Label" parent="."]
@@ -244,12 +234,12 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1273.44
-margin_top = 939.728
-margin_right = 1356.44
-margin_bottom = 959.728
+margin_left = 1276.11
+margin_top = 913.031
+margin_right = 1359.11
+margin_bottom = 933.031
 rect_scale = Vector2( 2.79519, 2.79519 )
-text = "Main Menu"
+text = "CONTINUE"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -39,3 +39,9 @@ func error():
 	is_dancing = false
 	yield($AnimationPlayer,"animation_finished")
 	is_dancing = true
+
+func power_sing():
+	$Sing.hide()
+	$Idle.hide()
+	$Sustain.show()
+	$Error.hide()

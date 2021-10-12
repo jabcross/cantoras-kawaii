@@ -211,12 +211,12 @@ texture = SubResource( 1 )
 offset = Vector2( -25.6734, -419.06 )
 
 [node name="Idle" parent="." index="1"]
-visible = true
 position = Vector2( 4.77173, -2.13499 )
 texture = SubResource( 2 )
 offset = Vector2( -7.49337, -450.38 )
 
 [node name="Sustain" parent="." index="2"]
+visible = true
 position = Vector2( -0.573669, -9.26221 )
 texture = SubResource( 3 )
 offset = Vector2( 6.25791, -415.02 )

@@ -160,7 +160,7 @@ tracks/4/keys = {
 
 [node name="Sapa" instance=ExtResource( 1 )]
 
-[node name="Idle" parent="." index="1"]
+[node name="Sustain" parent="." index="2"]
 visible = true
 
 [node name="Error" parent="." index="3"]

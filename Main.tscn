@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Battles/VersusFrog.tscn" type="PackedScene" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://art/fonts/Rubik-Medium.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://art/fonts/Rubik-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://art/selection_screen.png" type="Texture" id=19]
+[ext_resource path="res://ChoirScene.tscn" type="PackedScene" id=20]
+[ext_resource path="res://art/credits.png" type="Texture" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 76
@@ -32,10 +34,20 @@ font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 240
+outline_size = 24
+outline_color = Color( 0.894118, 0.286275, 0.513726, 1 )
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 120
+size = 36
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 48
 font_data = ExtResource( 18 )
 
 [node name="Main" type="Control"]
@@ -250,25 +262,102 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TitleScreen"]
-margin_left = 87.8599
-margin_top = 56.5682
-margin_right = 1809.86
-margin_bottom = 553.568
+margin_left = 78.0
+margin_top = 62.0
+margin_right = 1332.0
+margin_bottom = 635.0
 custom_fonts/font = SubResource( 3 )
 text = "Bichinho
-Sing-Off"
+  Sing-Off"
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="TitleScreen"]
-margin_left = 111.661
+[node name="Start" type="Button" parent="TitleScreen"]
+margin_left = 540.177
 margin_top = 715.339
-margin_right = 588.661
+margin_right = 1017.18
 margin_bottom = 944.339
 custom_fonts/font = SubResource( 4 )
 text = "START"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choir" parent="." instance=ExtResource( 20 )]
+visible = false
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="02" type="TextureRect" parent="Credits"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="03" type="TextureRect" parent="Credits"]
+margin_left = 238.0
+margin_top = 80.0
+margin_right = 1221.0
+margin_bottom = 910.0
+texture = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="Credits"]
+margin_left = 312.0
+margin_top = 254.0
+margin_right = 1145.0
+margin_bottom = 845.0
+custom_fonts/bold_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[b]PROGRAMAÇÃO[/b]
+Pedro Ciambra (@jabcross)
+Débora Prudêncio (@borabee)
+
+[b]ARTE[/b]
+Lívia Santos (@raviolivs)
+Débora Prudêncio (@borabee)
+Ana Lívia Ruegger (@liviaruegger)
+
+[b]MÚSICA[/b]
+Lívia Makiyoshi (@makiyoshi)"
+tab_size = 3
+text = "PROGRAMAÇÃO
+Pedro Ciambra (@jabcross)
+Débora Prudêncio (@borabee)
+
+ARTE
+Lívia Santos (@raviolivs)
+Débora Prudêncio (@borabee)
+Ana Lívia Ruegger (@liviaruegger)
+
+MÚSICA
+Lívia Makiyoshi (@makiyoshi)"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayAgain" type="Button" parent="Credits"]
+margin_left = 579.763
+margin_top = 906.436
+margin_right = 852.763
+margin_bottom = 998.436
+custom_fonts/font = SubResource( 4 )
+text = "PLAY AGAIN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -286,4 +375,5 @@ __meta__ = {
 [connection signal="pressed" from="SelectionScreen/Morcegue" to="." method="_on_Morcegue_pressed"]
 [connection signal="pressed" from="SelectionScreen/Leoa" to="." method="_on_Leoa_pressed"]
 [connection signal="pressed" from="SelectionScreen/Beluga" to="." method="_on_Beluga_pressed"]
-[connection signal="pressed" from="TitleScreen/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="TitleScreen/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Credits/PlayAgain" to="." method="_on_PlayAgain_pressed"]

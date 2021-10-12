@@ -82,4 +82,4 @@ func dramatic_reveal():
 	$Percentage.show()
 
 func _on_Button_pressed():
-	get_parent().return_to_title(self)
+	get_parent().return_to_selection_screen(self)
