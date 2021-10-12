@@ -45,3 +45,4 @@ func power_sing():
 	$Idle.hide()
 	$Sustain.show()
 	$Error.hide()
+	is_dancing = true

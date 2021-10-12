@@ -18,7 +18,7 @@ func return_to_selection_screen(scene):
 		get_node("SelectionScreen/FrogGrade").text == "S" and
 		get_node("SelectionScreen/WhaleGrade").text == "S" and
 		get_node("SelectionScreen/LionGrade").text == "S"):
-		show_credits()
+		show_choir_scene()
 	else:
 		scene_transition(scene, $SelectionScreen)
 		scene.get_node("Label").reset()
@@ -49,13 +49,15 @@ func show_score(battle):
 	scene_transition(battle, $ScoreScreen)
 	scoring.reset()
 	
-func show_credits():
+func show_choir_scene():
 	scene_transition($ScoreScreen, $Choir)
 	get_node("Choir/ChoirSong").play()
-	yield(get_tree().create_timer(84), "timeout")
-	scene_transition($Choir, $Credits)
-	get_node("Choir/ChoirSong").play()
+	yield(get_tree().create_timer(60), "timeout")
+	show_credits()
 
+func show_credits():
+	scene_transition($Choir, $Credits)
+	
 func scene_transition(old_scene, new_scene):
 	$Fade.show()
 	$Tween.interpolate_property($Fade,"modulate",Color.transparent,Color.white,1.0);
@@ -83,6 +85,7 @@ func _on_Beluga_pressed():
 
 func _on_PlayAgain_pressed():
 	scene_transition($Credits, $TitleScreen)
+	get_node("Choir/ChoirSong").stop()
 
 func _on_Start_pressed():
 	scene_transition($TitleScreen, $SelectionScreen)

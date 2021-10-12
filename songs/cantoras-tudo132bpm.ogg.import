@@ -12,4 +12,4 @@ dest_files=[ "res://.import/cantoras-tudo132bpm.ogg-5cea94d32f754dabac576130fcfb
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=2.0

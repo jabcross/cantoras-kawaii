@@ -159,6 +159,7 @@ tracks/4/keys = {
 }
 
 [node name="Sapa" instance=ExtResource( 1 )]
+scale = Vector2( 1, 0.937169 )
 
 [node name="Sustain" parent="." index="2"]
 visible = true
