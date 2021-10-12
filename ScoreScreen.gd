@@ -25,7 +25,7 @@ func reset_screen():
 	get_node("PodiumLeft/Morcegue/Error").hide()
 	get_node("PodiumLeft/Sapa/Error").hide()
 
-func update_scores(score, total_beats, beats_hit, character):
+func update_scores(score, total_beats, beats_hit, character, score_label, grade_label):
 	
 	$TotalBeats.text = String(total_beats)
 	$BeatsHit.text = String(beats_hit)
@@ -56,6 +56,10 @@ func update_scores(score, total_beats, beats_hit, character):
 		get_node("PodiumLeft/Leoa/Error").show()
 		get_node("PodiumLeft/Morcegue/Error").show()
 		get_node("PodiumLeft/Sapa/Error").show()
+	
+	if score > score_label.text.to_int():
+		score_label.text = String(score)
+		grade_label.text = $Grade.text
 	
 	if character == "Baleia": get_node("PodiumLeft/Baleia").show()
 	elif character == "Leoa": get_node("PodiumLeft/Leoa").show()
