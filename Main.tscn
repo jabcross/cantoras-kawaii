@@ -301,7 +301,6 @@ __meta__ = {
 visible = false
 
 [node name="Credits" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -317,7 +316,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Credits"]
-position = Vector2( 709.816, 888.783 )
+position = Vector2( 709.816, 884.783 )
 scale = Vector2( 0.726659, 0.631075 )
 texture = ExtResource( 22 )
 flip_h = true
@@ -351,7 +350,7 @@ Débora Prudêncio (@borabee)
 Ana Lívia Ruegger (@liviaruegger)
 
 [b]MÚSICA[/b]
-Lívia Makiyoshi (@makiyoshi)"
+Lívia Maki Yoshikawa (@makiyoshi)"
 tab_size = 3
 text = "PROGRAMAÇÃO
 Pedro Ciambra (@jabcross)
@@ -363,7 +362,7 @@ Débora Prudêncio (@borabee)
 Ana Lívia Ruegger (@liviaruegger)
 
 MÚSICA
-Lívia Makiyoshi (@makiyoshi)"
+Lívia Maki Yoshikawa (@makiyoshi)"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -371,9 +370,9 @@ __meta__ = {
 
 [node name="PlayAgain" type="LinkButton" parent="Credits"]
 margin_left = 544.485
-margin_top = 926.343
+margin_top = 922.343
 margin_right = 903.485
-margin_bottom = 998.343
+margin_bottom = 994.343
 rect_rotation = -6.5
 custom_fonts/font = SubResource( 7 )
 text = "PLAY AGAIN"

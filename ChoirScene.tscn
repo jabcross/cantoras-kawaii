@@ -41,7 +41,7 @@ __meta__ = {
 stream = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 1, -102.895 )
+position = Vector2( 1, -97.895 )
 scale = Vector2( 0.9, 0.9 )
 
 [node name="Sapa" parent="Node2D" instance=ExtResource( 5 )]
@@ -49,11 +49,10 @@ position = Vector2( 349.61, 859.075 )
 scale = Vector2( 1, 1 )
 
 [node name="Sustain" parent="Node2D/Sapa" index="2"]
-position = Vector2( -24.5521, -34.6802 )
 flip_h = true
 
 [node name="Node2D2" type="Node2D" parent="."]
-position = Vector2( 229.953, -87.3792 )
+position = Vector2( 229.953, -82.3792 )
 scale = Vector2( 0.9, 0.9 )
 
 [node name="Morcegue" parent="Node2D2" instance=ExtResource( 1 )]
@@ -67,7 +66,7 @@ visible = true
 flip_h = true
 
 [node name="Node2D3" type="Node2D" parent="."]
-position = Vector2( -454.625, -771.352 )
+position = Vector2( -454.625, -766.352 )
 scale = Vector2( 1.7, 1.7 )
 
 [node name="Beluga" parent="Node2D3" instance=ExtResource( 6 )]
@@ -77,20 +76,23 @@ position = Vector2( 621.221, 881.29 )
 flip_h = true
 
 [node name="Node2D4" type="Node2D" parent="."]
-position = Vector2( 177.367, -72.2044 )
+position = Vector2( 177.367, -67.2044 )
 scale = Vector2( 1.55, 1.55 )
 
 [node name="Leoa" parent="Node2D4" instance=ExtResource( 3 )]
 position = Vector2( 735.615, 525.696 )
 
 [node name="Idle" parent="Node2D4/Leoa" index="1"]
+position = Vector2( -0.26001, -6.06732 )
+
+[node name="Sustain" parent="Node2D4/Leoa" index="2"]
 visible = true
 
 [node name="Error" parent="Node2D4/Leoa" index="3"]
 visible = false
 
 [node name="Node2D5" type="Node2D" parent="."]
-position = Vector2( -138.484, -302.847 )
+position = Vector2( -138.484, -297.847 )
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Calopsita" parent="Node2D5" instance=ExtResource( 10 )]
@@ -107,15 +109,15 @@ wait_time = 0.5
 autostart = true
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1307.65, 961.085 )
+position = Vector2( 1307.65, 939.085 )
 scale = Vector2( 0.375141, 0.384813 )
 texture = ExtResource( 9 )
 
 [node name="Skip" type="LinkButton" parent="."]
 margin_left = 1216.8
-margin_top = 955.378
+margin_top = 933.378
 margin_right = 1384.8
-margin_bottom = 1012.38
+margin_bottom = 990.38
 rect_rotation = 7.0
 custom_fonts/font = SubResource( 1 )
 text = "SKIP >>"
@@ -126,9 +128,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_left = 213.574
-margin_top = 776.877
+margin_top = 754.877
 margin_right = 1709.57
-margin_bottom = 952.877
+margin_bottom = 930.877
 custom_fonts/font = SubResource( 2 )
 text = "CONGRATULATIONS!"
 align = 1
